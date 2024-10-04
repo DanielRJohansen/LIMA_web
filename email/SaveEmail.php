@@ -7,7 +7,7 @@ if (isset($_POST['email'])) {
     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
     
     // Specify the file to store emails
-    $file = 'email/emails.csv';
+    $file = 'emails.csv';
     
     // Append the email to the CSV file
     $handle = fopen($file, 'a');
