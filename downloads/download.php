@@ -3,7 +3,7 @@
 $downloadDir = __DIR__ . '/';
 
 // Define the correct path to track download counts
-$countsFile = $downloadDir . 'download_counts.csv';
+$countsFile = $downloadDir . '/../database/download_counts.csv';
 
 // Get the file from the URL
 if (isset($_GET['file'])) {

@@ -1,0 +1,11 @@
+# Block direct access to the CSV file
+<Files "emails.csv">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Prevent PHP scripts from running in this directory (optional if you store scripts elsewhere)
+<FilesMatch "\.(php)$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>

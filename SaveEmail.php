@@ -1,4 +1,7 @@
 <?php
+session_start();
+
+
 // Get the email from the POST request
 if (isset($_POST['email'])) {
     $email = $_POST['email'];
@@ -6,8 +9,18 @@ if (isset($_POST['email'])) {
     // Sanitize the email input
     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
     
+    // Prevent CSV injection
+    function sanitizeForCSV($data) {
+        if (preg_match('/^[=+\-@]/', $data)) {
+            $data = "'" . $data;
+        }
+        return $data;
+    }
+    $email = sanitizeForCSV($email);
+
+
     // Specify the file to store emails
-    $file = 'emails.csv';
+    $file = 'database/emails.csv';
     
     // Append the email to the CSV file
     $handle = fopen($file, 'a');
