@@ -1,0 +1,5 @@
+LIMA (LIMAMD) License
+    Usage Rights: You are free to download, install, and use this software.
+    No Modifications: You may not modify, alter, or create derivative works from the software.
+    No Commercial Use: You may not sell, lease, or distribute the software for commercial purposes.
+    Redistribution: Redistribution of the software is allowed only in its unmodified form and for non-commercial purposes.
