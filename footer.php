@@ -1,6 +1,11 @@
-<footer class="bg-dark text-white py-3">
-    <div class="container">
-        <p>&copy; 2024 LIMA Dynamics Aps. All rights reserved.</p>
+        <footer class="site-footer">
+            <span>LIMA Dynamics · Denmark</span>
+            <nav class="footer-links" aria-label="More about LIMA">
+                <a href="missionpage.php">Mission</a>
+                <a href="aboutpage.php">About</a>
+                <a href="mailto:info@lima-dynamics.com">Contact</a>
+            </nav>
+        </footer>
     </div>
-</footer>
+</body>
 </html>

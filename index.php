@@ -1,95 +1,40 @@
 <?php include('header.php'); ?>
-
-<body>
-    <!-- Video Background Wrapper -->
-    <div class="video-background-wrapper" style="position: relative;">
-
-        <!-- Video Background -->
-        <div class="video-background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1;">
-            <video autoplay muted loop style="width: 100%; height: 100%; object-fit: cover;">
-                <source src="resources/output.mp4" type="video/mp4">
-                Your browser does not support HTML5 video.
-            </video>
-            <!-- Dark overlay -->
-            <div class="dark-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9);"></div>
-        </div>
-
-        <main class="container" style="padding-bottom: 150px; position: relative;">
-            <!-- Title Section -->
-            <section class="mb-4 text-light" style="padding-bottom: 40px; padding-top: 150px; ">
-                <h1 style="font-size: 3rem; font-weight: bold;">Molecular Dynamics <br> for the Generative AI era</h1>
+        <main class="workspace">
+            <section class="intro" aria-labelledby="headline">
+                <div class="eyebrow">Molecular dynamics · Linux</div>
+                <h1 id="headline">Serious physics.<br>Modern workflows.</h1>
+                <p class="muted">LIMA MD is a molecular dynamics engine built for modern research—and the agents working alongside you.</p>
+                <div class="download-actions">
+                    <a class="download primary" href="downloads/download.php?file=lima_1.0-1_amd64.deb">↓ Debian / Ubuntu</a>
+                    <a class="download" href="downloads/download.php?file=PKGBUILD">↓ Arch Linux</a>
+                </div>
+                <p class="note">Linux packages · NVIDIA GPU required</p>
+                <details class="installation">
+                    <summary>Installation</summary>
+                    <div class="install-option"><span>Debian / Ubuntu</span><code>sudo apt install ./lima_1.0-1_amd64.deb</code></div>
+                    <div class="install-option"><span>Arch Linux</span><code>makepkg -si</code></div>
+                    <div class="install-option"><span>Verify the installation</span><code>lima selftest</code></div>
+                    <a href="downloadspage.php">Full installation instructions ↗</a>
+                </details>
             </section>
-
-            <!-- Download Buttons Section -->
-            <section class="mb-4" style="padding-left:0px;">
-                <!-- Arch Linux Button: Official color #1793D1 -->
-                <a href="downloads/download.php?file=PKGBUILD" class="btn btn-lg me-3" role="button" style="background-color: #1793D1; color: white;">Arch-linux</a>
-
-                <!-- Ubuntu Button: Official color #E95420 -->
-                <a href="downloads/download.php?file=lima_1.0-1_amd64.deb" class="btn btn-lg" role="button" style="background-color: #E95420; color: white;">Debian/Ubuntu</a>
-            </section>
-
-            <!-- Description Section -->
-            <section>
-                <p style="font-size: 1.25rem;">Install and run the Membranebuilder today - it's free!</p>
+            <section class="console-section" aria-label="Explore LIMA's CLI">
+                <div class="console-window">
+                    <div class="window-bar"><span>~/toy_console</span><span class="accent">no commands actually run</span></div>
+                    <pre class="console-output" id="lima-console-output" aria-label="LIMA CLI help"><?php
+                        $cliJson = file_get_contents(__DIR__ . '/resources/cli-help.json');
+                        $cli = json_decode($cliJson, true, 512, JSON_THROW_ON_ERROR);
+                        echo htmlspecialchars("❯ lima --help\n\n" . $cli['generalHelp'], ENT_QUOTES, 'UTF-8');
+                    ?></pre>
+                    <form class="console-form" id="lima-console-form">
+                        <label for="lima-console-input" aria-label="Command prompt">❯</label>
+                        <input id="lima-console-input" aria-label="LIMA command" placeholder="lima buildmembrane" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="4096">
+                        <!--<button type="submit">Enter</button>-->
+                    </form>
+                    <p class="note console-status" id="lima-console-status" aria-live="polite">Try 'lima mdrun' · ↑ history · Tab complete</p>
+                    <noscript><p class="note">Enable JavaScript to explore command help.</p></noscript>
+                </div>
             </section>
         </main>
-    </div>
-
-    <!-- Subscribe Section -->
-    <section class="py-5" style="background-color: rgba(0,0,0,0.1); padding-top: 100px;">
-        <div class="container">
-            <div class="row">
-                <!-- Left: Signup Form -->
-                <div class="col-md-6">
-                    <h4>Stay updated</h4>
-                    <p>Sign up to receive devlogs and feature updates from us.</p>
-
-                    <form id="emailForm" class="row gx-2">
-                        <div class="col-auto">
-                            <input type="email" name="email" class="form-control" placeholder="Enter your email" required style="min-width: 200px;">
-                        </div>
-                        <div class="col-auto">
-                            <button type="submit" class="btn btn-primary">Sign Up</button>
-                        </div>
-                    </form>
-
-                </div>
-
-                <!-- Right: Contact Information -->
-                <div class="col-md-6 text-md-end">
-                    <h5>LIMA Dynamics Aps</h5>
-                    <ul class="list-unstyled">
-                        <li>Denmark</li>
-                        <li>Noerregade 18</li>
-                        <li>5000 Odense</li>
-                        <li>info@lima-dynamics.com</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-</body>
-
+        <script type="application/json" id="lima-cli-data"><?php echo json_encode($cli, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR); ?></script>
+        <script src="cli-console.js" defer></script>
 <?php include('footer.php'); ?>
-
-<script>
-    document.getElementById('emailForm').addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevent the default form submission
-
-        var email = this.email.value;
-
-        // Send the email to SaveEmail.php via AJAX
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'SaveEmail.php', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                alert('Thank you for signing up!'); // Display success message
-                // Optionally clear the form
-                document.getElementById('emailForm').reset();
-            }
-        };
-        xhr.send('email=' + encodeURIComponent(email));
-    });
-</script>

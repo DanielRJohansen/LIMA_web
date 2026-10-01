@@ -1,0 +1,86 @@
+:root {
+    color-scheme: dark;
+    --ink: #e4e7ef;
+    --paper: #14171e;
+    --soft: #9ca5b7;
+    --line: #303743;
+    --accent: #a5dfc5;
+    --tile: #1c212b;
+    --button-ink: #14281f;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: inherit; text-underline-offset: 4px; }
+button, input { font: inherit; }
+button, summary { cursor: pointer; }
+a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+.site-shell { max-width: 1160px; min-height: 100svh; margin: auto; padding: 38px 48px 30px; display: flex; flex-direction: column; }
+.site-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.brand { font-size: 25px; font-weight: 700; letter-spacing: -1px; text-decoration: none; }
+.brand span { font: 12px Consolas, 'Courier New', monospace; letter-spacing: 0; color: var(--soft); }
+.header-links, .footer-links { display: flex; gap: 26px; flex-wrap: wrap; font: 12px Consolas, 'Courier New', monospace; }
+.header-links a, .footer-links a { text-decoration: none; }
+.header-links a:hover, .footer-links a:hover { color: var(--accent); }
+.workspace { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: center; flex: 1; padding: 90px 0 80px; }
+.eyebrow { font: 11px Consolas, 'Courier New', monospace; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); }
+h1 { font-size: clamp(38px, 4.5vw, 60px); font-weight: 500; line-height: 1.06; letter-spacing: -2.8px; margin: 24px 0; }
+p { font-size: 15px; line-height: 1.75; }
+.intro > p { max-width: 440px; }
+.muted { color: var(--soft); }
+.accent { color: var(--accent); }
+.download-actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 30px 0 15px; }
+.download { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; font: 13px Consolas, 'Courier New', monospace; padding: 13px 17px; border: 1px solid var(--line); border-radius: 5px; text-decoration: none; }
+.download:hover { border-color: var(--accent); }
+.download.primary { color: var(--button-ink); background: var(--accent); border-color: var(--accent); }
+.note { font: 11px/1.7 Consolas, 'Courier New', monospace; color: var(--soft); }
+.installation { font: 12px/1.8 Consolas, 'Courier New', monospace; margin-top: 16px; }
+.installation summary { color: var(--accent); padding: 5px 0; }
+.install-option { margin: 15px 0; }
+.install-option span { display: block; color: var(--soft); font: 11px/1.8 Consolas, 'Courier New', monospace; }
+code { display: block; font: 12px/1.8 Consolas, 'Courier New', monospace; overflow-wrap: anywhere; }
+.console-section { min-width: 0; }
+.console-window { background: var(--tile); border: 1px solid var(--line); border-radius: 9px; padding: 22px; }
+.window-bar { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font: 11px Consolas, 'Courier New', monospace; padding-bottom: 20px; color: var(--soft); }
+.console-output { height: 340px; margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--line) transparent; font: 12px/1.7 Consolas, 'Courier New', monospace; }
+.console-form { display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--line); padding-top: 15px; margin-top: 16px; }
+.console-form label { color: var(--accent); font: 16px monospace; }
+.console-form input { min-width: 0; width: 100%; padding: 8px 2px; border: 0; background: transparent; color: var(--ink); font: 13px Consolas, 'Courier New', monospace; }
+.console-form input::placeholder { color: var(--soft); }
+.console-form button { min-height: 36px; background: transparent; color: var(--soft); border: 1px solid var(--line); border-radius: 4px; padding: 8px; font: 11px monospace; }
+.console-form button:hover { color: var(--accent); border-color: var(--accent); }
+.console-status { min-height: 38px; margin: 12px 0 0; }
+.console-caption { margin-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font: 11px monospace; color: var(--soft); }
+.site-footer { margin-top: auto; padding-top: 26px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; font: 11px monospace; color: var(--soft); }
+.content-page { padding: 80px 0; max-width: 800px; }
+.content-page h1 { font-size: clamp(34px, 4vw, 48px); }
+.content-page h2 { font-size: 22px; font-weight: 500; letter-spacing: -.5px; margin-top: 36px; }
+.content-page p { color: var(--soft); }
+.content-page a { color: var(--accent); }
+.download-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; margin: 32px 0; }
+.download-option { border-top: 1px solid var(--line); padding-top: 20px; }
+.download-option h2 { margin: 0 0 20px; }
+.download-option .download { color: var(--ink); }
+.download-option .primary { color: var(--button-ink); }
+.download-option ol { padding-left: 20px; color: var(--soft); font-size: 14px; line-height: 1.9; }
+.download-option li { margin-bottom: 12px; }
+.download-option code { color: var(--ink); margin-top: 6px; }
+@media (max-width: 850px) {
+    .site-shell { padding: 30px; }
+    .workspace { gap: 28px; }
+    .console-window { padding: 18px; }
+}
+@media (max-width: 680px) {
+    .site-shell { padding: 26px 22px; }
+    .workspace { grid-template-columns: 1fr; padding: 60px 0 45px; gap: 42px; }
+    h1 { font-size: 45px; }
+    .header-links, .footer-links { gap: 18px; }
+    .console-form input { font-size: 16px; }
+    .console-form button { min-height: 44px; }
+    .console-output { height: 320px; }
+    .download-grid { grid-template-columns: 1fr; }
+    .content-page { padding: 50px 0; }
+    .installation summary { min-height: 44px; padding: 12px 0; }
+}
