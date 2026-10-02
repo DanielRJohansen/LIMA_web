@@ -12,7 +12,7 @@
 <body>
     <div class="site-shell">
         <header class="site-header">
-            <a class="brand" href="index.php" aria-label="LIMA MD home">LIMA <span>/ MD</span></a>
+            <a class="brand" href="index.php" aria-label="LIMA MD home"><img class="brand-logo" src="resources/limalogo/iconwhite.svg" alt="" width="40" height="40">LIMA <span>/ MD</span></a>
             <nav class="header-links" aria-label="Main navigation">
                 <a href="downloadspage.php">Downloads</a>
                 <a href="https://github.com/DanielRJohansen/LIMA" target="_blank" rel="noreferrer">Source ↗</a>

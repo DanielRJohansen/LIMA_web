@@ -1,12 +1,13 @@
 <?php include('header.php'); ?>
         <main class="workspace">
             <section class="intro" aria-labelledby="headline">
-                <div class="eyebrow">Molecular dynamics · Linux</div>
-                <h1 id="headline">Serious physics.<br>Modern workflows.</h1>
-                <p class="muted">LIMA MD is a molecular dynamics engine built for modern research—and the agents working alongside you.</p>
+                <div class="eyebrow">Molecular dynamics</div>
+                <h1 id="headline">1000s of mdrun's.<br>1 interface.</h1>
+                <p class="muted">LIMA MD is a molecular dynamics engine for researchers and their agents. Ultra-low latency in system preparation keeps setup overhead low—even across thousands of small simulations.</p>
                 <div class="download-actions">
-                    <a class="download primary" href="downloads/download.php?file=lima_1.0-1_amd64.deb">↓ Debian / Ubuntu</a>
+                    <a class="download" href="downloads/download.php?file=lima_1.0-1_amd64.deb">↓ Debian / Ubuntu</a>
                     <a class="download" href="downloads/download.php?file=PKGBUILD">↓ Arch Linux</a>
+                    <button class="download" type="button" disabled aria-describedby="windows-status">Windows · Coming soon</button>
                 </div>
                 <p class="note">Linux packages · NVIDIA GPU required</p>
                 <details class="installation">

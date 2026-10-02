@@ -19,12 +19,15 @@ button, summary { cursor: pointer; }
 a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
 .site-shell { max-width: 1160px; min-height: 100svh; margin: auto; padding: 38px 48px 30px; display: flex; flex-direction: column; }
 .site-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-.brand { font-size: 25px; font-weight: 700; letter-spacing: -1px; text-decoration: none; }
+.brand { display: inline-flex; align-items: center; gap: 8px; font-size: 25px; font-weight: 700; letter-spacing: -1px; text-decoration: none; }
+.brand-logo { display: block; flex-shrink: 0; margin-right: 4px; }
 .brand span { font: 12px Consolas, 'Courier New', monospace; letter-spacing: 0; color: var(--soft); }
 .header-links, .footer-links { display: flex; gap: 26px; flex-wrap: wrap; font: 12px Consolas, 'Courier New', monospace; }
 .header-links a, .footer-links a { text-decoration: none; }
+.header-links { align-items: center; }
+.header-links a { display: inline-flex; align-items: center; min-height: 40px; line-height: 1; }
 .header-links a:hover, .footer-links a:hover { color: var(--accent); }
-.workspace { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: center; flex: 1; padding: 90px 0 80px; }
+.workspace { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: start; align-content: start; flex: 1; padding: clamp(110px, 19svh, 240px) 0 80px; }
 .eyebrow { font: 11px Consolas, 'Courier New', monospace; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); }
 h1 { font-size: clamp(38px, 4.5vw, 60px); font-weight: 500; line-height: 1.06; letter-spacing: -2.8px; margin: 24px 0; }
 p { font-size: 15px; line-height: 1.75; }
@@ -34,7 +37,10 @@ p { font-size: 15px; line-height: 1.75; }
 .download-actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 30px 0 15px; }
 .download { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; font: 13px Consolas, 'Courier New', monospace; padding: 13px 17px; border: 1px solid var(--line); border-radius: 5px; text-decoration: none; }
 .download:hover { border-color: var(--accent); }
-.download.primary { color: var(--button-ink); background: var(--accent); border-color: var(--accent); }
+a.download { color: var(--accent); background: rgba(165, 223, 197, .09); border-color: rgba(165, 223, 197, .3); }
+a.download:hover { background: rgba(165, 223, 197, .16); border-color: rgba(165, 223, 197, .55); }
+.download:disabled { color: var(--soft); border-style: dashed; cursor: not-allowed; }
+.download:disabled:hover { border-color: var(--line); }
 .note { font: 11px/1.7 Consolas, 'Courier New', monospace; color: var(--soft); }
 .installation { font: 12px/1.8 Consolas, 'Courier New', monospace; margin-top: 16px; }
 .installation summary { color: var(--accent); padding: 5px 0; }
@@ -62,8 +68,6 @@ code { display: block; font: 12px/1.8 Consolas, 'Courier New', monospace; overfl
 .download-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; margin: 32px 0; }
 .download-option { border-top: 1px solid var(--line); padding-top: 20px; }
 .download-option h2 { margin: 0 0 20px; }
-.download-option .download { color: var(--ink); }
-.download-option .primary { color: var(--button-ink); }
 .download-option ol { padding-left: 20px; color: var(--soft); font-size: 14px; line-height: 1.9; }
 .download-option li { margin-bottom: 12px; }
 .download-option code { color: var(--ink); margin-top: 6px; }
