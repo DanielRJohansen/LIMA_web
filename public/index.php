@@ -1,19 +1,25 @@
-<?php include('header.php'); ?>
+<?php
+require_once __DIR__ . '/releases.php';
+$release = lima_latest_release();
+$debName = $release['assets']['deb']['name'] ?? 'lima_VERSION_amd64.deb';
+include('header.php');
+?>
         <main class="workspace">
             <section class="intro" aria-labelledby="headline">
                 <div class="eyebrow">Molecular dynamics</div>
                 <h1 id="headline">1000s of mdrun's.<br>1 interface.</h1>
                 <p class="muted">LIMA MD is a molecular dynamics engine for researchers and their agents. Ultra-low latency in system preparation keeps setup overhead low—even across thousands of small simulations.</p>
                 <div class="download-actions">
-                    <a class="download" href="downloads/download.php?file=lima_1.0-1_amd64.deb">↓ Debian / Ubuntu</a>
-                    <a class="download" href="downloads/download.php?file=PKGBUILD">↓ Arch Linux</a>
-                    <button class="download" type="button" disabled aria-describedby="windows-status">Windows · Coming soon</button>
+                    <a class="download" href="<?php echo lima_h(lima_download_href($release, 'deb')); ?>">↓ Debian / Ubuntu</a>
+                    <a class="download" href="<?php echo lima_h(lima_download_href($release, 'pkgbuild')); ?>">↓ Arch Linux</a>
+                    <a class="download" href="<?php echo lima_h(lima_download_href($release, 'windows')); ?>">↓ Windows</a>
                 </div>
-                <p class="note">Linux packages · NVIDIA GPU required</p>
+                <p class="note">Linux and Windows · NVIDIA GPU required<?php if ($release) echo ' · ' . lima_h($release['tag']); ?></p>
                 <details class="installation">
                     <summary>Installation</summary>
-                    <div class="install-option"><span>Debian / Ubuntu</span><code>sudo apt install ./lima_1.0-1_amd64.deb</code></div>
+                    <div class="install-option"><span>Debian / Ubuntu</span><code>sudo apt install ./<?php echo lima_h($debName); ?></code></div>
                     <div class="install-option"><span>Arch Linux</span><code>makepkg -si</code></div>
+                    <div class="install-option"><span>Windows</span><code>Unzip, then run lima.exe in a terminal</code></div>
                     <div class="install-option"><span>Verify the installation</span><code>lima selftest</code></div>
                     <a href="downloadspage.php">Full installation instructions ↗</a>
                 </details>

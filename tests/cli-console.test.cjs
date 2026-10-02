@@ -2,8 +2,8 @@ const assert = require('node:assert/strict');
 const test = require('node:test');
 const fs = require('node:fs');
 const vm = require('node:vm');
-const cli = require('../resources/cli-help.json');
-const { GetHelp } = require('../cli-console.js');
+const cli = require('../public/resources/cli-help.json');
+const { GetHelp } = require('../public/cli-console.js');
 
 test('all commands return exact help regardless of options', () => {
     assert.equal(cli.commands.length, 12);
@@ -27,7 +27,7 @@ test('submission, history, draft restoration, completion and keyboard exit', () 
     }
     elements.get('lima-cli-data').textContent = JSON.stringify(cli);
     const context = vm.createContext({ document: { getElementById: id => elements.get(id) } });
-    vm.runInContext(fs.readFileSync(require.resolve('../cli-console.js'), 'utf8'), context);
+    vm.runInContext(fs.readFileSync(require.resolve('../public/cli-console.js'), 'utf8'), context);
     const input = elements.get('lima-console-input');
     const output = elements.get('lima-console-output');
     const form = elements.get('lima-console-form');

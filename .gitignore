@@ -1,2 +1,9 @@
 .vs*
 *.mp4
+
+# Local counts and emails from run.bat
+/dev-data/
+
+# Data that exists only on the server. Never commit it, and never upload it over the real files
+/public/database/*
+!/public/database/.htaccess

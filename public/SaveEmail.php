@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__ . '/releases.php';	// For lima_data_dir()
 
 
 // Get the email from the POST request
@@ -20,7 +21,7 @@ if (isset($_POST['email'])) {
 
 
     // Specify the file to store emails
-    $file = 'database/emails.csv';
+    $file = lima_data_dir() . '/emails.csv';
     
     // Append the email to the CSV file
     $handle = fopen($file, 'a');
