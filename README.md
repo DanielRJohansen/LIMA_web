@@ -15,7 +15,7 @@ Everything else in this folder (`README.md`, `run.bat`, `.gitignore`, `LICENSE.t
 
 ## Run locally
 
-Run `run.bat`, which needs PHP 7.3 or newer on the PATH, and open http://localhost:8000. It serves `public/`, and keeps download counts and subscriber emails in `dev-data/`.
+Run `run.bat`, which needs PHP 7.3 or newer on the PATH, and open http://localhost:8000. It serves `public/`, uses the same extensionless routes as production, and keeps download counts and subscriber emails in `dev-data/`.
 
 ## Deploying
 

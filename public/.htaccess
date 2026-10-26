@@ -1,4 +1,39 @@
 RewriteEngine On
+
+# Redirect legacy PHP page URLs to their public, extensionless equivalents.
+RewriteCond %{THE_REQUEST} \s/+index\.php(?:[?\s]) [NC]
+RewriteRule ^index\.php$ / [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+downloadspage\.php(?:[?\s]) [NC]
+RewriteRule ^downloadspage\.php$ /downloads [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+blogpage\.php(?:[?\s]) [NC]
+RewriteRule ^blogpage\.php$ /blog [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+missionpage\.php(?:[?\s]) [NC]
+RewriteRule ^missionpage\.php$ /mission [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+aboutpage\.php(?:[?\s]) [NC]
+RewriteRule ^aboutpage\.php$ /about [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+downloads/download\.php(?:[?\s]) [NC]
+RewriteRule ^downloads/download\.php$ /downloads/download [R=301,L]
+
+# Keep any remaining direct PHP GET requests extensionless without redirecting
+# internal rewrites or POST endpoints.
+RewriteCond %{REQUEST_METHOD} =GET
+RewriteCond %{THE_REQUEST} \s/+.+\.php(?:[?\s]) [NC]
+RewriteRule ^(.+)\.php$ /$1 [R=301,L,NE]
+
+# Map the public route names to their PHP implementations.
+RewriteRule ^downloads$ downloadspage.php [L]
+RewriteRule ^blog$ blogpage.php [L]
+RewriteRule ^benchmark$ benchmark.php [L]
+RewriteRule ^mission$ missionpage.php [L]
+RewriteRule ^about$ aboutpage.php [L]
+RewriteRule ^downloads/download$ downloads/download.php [L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^([^/]+)$ $1.php [L]
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+?)/?$ $1.php [L]

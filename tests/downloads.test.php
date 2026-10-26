@@ -152,7 +152,7 @@ scenario('A published release', 600, function ($port, $setMode, $dataDir, $fixtu
     [$status, , $page] = get($port, '/downloadspage.php');
     check('downloads page shows the version and real file name',
         $status === 200 && strpos($page, 'Latest release: v1.3.0') !== false && strpos($page, 'sudo apt install ./lima_1.3.0_amd64.deb') !== false);
-    check('downloads page has a working Windows download', strpos($page, 'download.php?platform=windows') !== false && strpos($page, 'Coming soon') === false);
+    check('downloads page has a working Windows download', strpos($page, '/downloads/download?platform=windows') !== false && strpos($page, 'Coming soon') === false);
     check('downloads page states the right GPU requirement', strpos($page, 'RTX 4000 series') !== false && strpos($page, '3000') === false);
     [$status, , $page] = get($port, '/index.php');
     check('front page buttons and install command follow the release',

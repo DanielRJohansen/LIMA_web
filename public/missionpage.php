@@ -9,6 +9,6 @@
             <h2>Where LIMA fits</h2>
             <p>LIMA MD is a molecular dynamics engine built for modern research and agent workflows. It uses NVIDIA GPUs to simulate molecular systems and supports workflows for building membranes, preparing structures, and running simulations.</p>
             <p>Our ambition is to give researchers and AI systems an accessible physical simulation engine—a digital laboratory for exploring molecular interactions.</p>
-            <a href="downloadspage.php">Get LIMA MD ↗</a>
+            <a href="/downloads">Get LIMA MD ↗</a>
         </main>
 <?php include('footer.php'); ?>

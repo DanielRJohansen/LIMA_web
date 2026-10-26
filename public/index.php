@@ -21,7 +21,7 @@ include('header.php');
                     <div class="install-option"><span>Arch Linux</span><code>makepkg -si</code></div>
                     <div class="install-option"><span>Windows</span><code>Unzip, then run lima.exe in a terminal</code></div>
                     <div class="install-option"><span>Verify the installation</span><code>lima selftest</code></div>
-                    <a href="downloadspage.php">Full installation instructions ↗</a>
+                    <a href="/downloads">Full installation instructions ↗</a>
                 </details>
             </section>
             <section class="console-section" aria-label="Explore LIMA's CLI">

@@ -120,7 +120,7 @@ function lima_latest_release(): ?array {
 
 // Where a download button goes. Through our counter if the file exists, otherwise to the releases page
 function lima_download_href(?array $release, string $kind): string {
-    return isset($release['assets'][$kind]) ? 'downloads/download.php?platform=' . $kind : LIMA_RELEASES_PAGE;
+    return isset($release['assets'][$kind]) ? '/downloads/download?platform=' . $kind : LIMA_RELEASES_PAGE;
 }
 
 function lima_h(string $text): string {
