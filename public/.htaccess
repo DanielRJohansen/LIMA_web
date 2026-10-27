@@ -1,5 +1,9 @@
 RewriteEngine On
 
+# /downloads is both a page and the downloads/ folder. Without this, Apache redirects /downloads to /downloads/,
+# which has no index and gives 403.
+DirectorySlash Off
+
 # Redirect legacy PHP page URLs to their public, extensionless equivalents.
 RewriteCond %{THE_REQUEST} \s/+index\.php(?:[?\s]) [NC]
 RewriteRule ^index\.php$ / [R=301,L]
@@ -26,7 +30,7 @@ RewriteCond %{THE_REQUEST} \s/+.+\.php(?:[?\s]) [NC]
 RewriteRule ^(.+)\.php$ /$1 [R=301,L,NE]
 
 # Map the public route names to their PHP implementations.
-RewriteRule ^downloads$ downloadspage.php [L]
+RewriteRule ^downloads/?$ downloadspage.php [L]
 RewriteRule ^blog$ blogpage.php [L]
 RewriteRule ^benchmark$ benchmark.php [L]
 RewriteRule ^mission$ missionpage.php [L]
