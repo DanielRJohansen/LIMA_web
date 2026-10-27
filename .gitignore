@@ -7,3 +7,6 @@
 # Data that exists only on the server. Never commit it, and never upload it over the real files
 /public/database/*
 !/public/database/.htaccess
+
+# lima gromacscompare dataset (82 MB+): deployed with public/, but too large for git, see TODO.md
+/public/benchdata/
